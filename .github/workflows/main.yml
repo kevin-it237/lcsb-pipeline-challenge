@@ -23,4 +23,4 @@ jobs:
         docker build . --file Dockerfile --tag python-pipeline
     - name: Docker Push
       run: |
-        docker push ${{ secrets.DOCKER_USER }}/python-pipeline
+        docker push ${{ secrets.DOCKER_USER }}/python-pipeline:python-pipeline

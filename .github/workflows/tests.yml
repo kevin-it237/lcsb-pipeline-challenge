@@ -2,8 +2,10 @@ name: Run tests
 
 on:
   workflow_call:
-    config-path:
-      required: false
+   inputs:
+      config-path:
+        required: true
+        type: string
 
 jobs:
   test:

@@ -20,7 +20,8 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Docker Build
       run: |
-        docker build ./ -t pipeline-image
+        docker build . --file Dockerfile --tag python-pipeline:latest
     - name: Docker Push
       run: |
-        docker push ${{ secrets.DOCKER_USER }}/python-pipeline:pipeline-image
+        docker tag python-pipeline:latest ${{secrets.DOCKER_USER}}/python-pipeline:latest
+        docker push ${{ secrets.DOCKER_USER }}/python-pipeline:latest

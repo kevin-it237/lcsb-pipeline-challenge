@@ -5,6 +5,10 @@ on:
     branches: ["master"]
 
 jobs:
+  tests:
+    name: Run unit tests
+    uses: ./.github/workflows/tests.yml
+
   build:
     runs-on: ubuntu-latest
 

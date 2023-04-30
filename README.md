@@ -23,6 +23,9 @@ python3 -m unittest test_pipeline.py
 
 
 ## Run the docker container
+
+The docker configuration is located inside the `Dockerfile`.
+
 1. Build the image
 
 ```
@@ -30,6 +33,7 @@ docker build -t pipeline-image .
 ```
 
 2. Run the image
+
 
 ```
 docker run -v ~/pipeline-data:/app/pipeline-data --name data-pipeline pipeline-image
@@ -41,3 +45,7 @@ The pipeline data (inputs and the output file) is located in the user folder of 
 
 
 ## Deployment with Github Actions
+
+
+## Briefly describe what you would need to change for `N=1e6`
+

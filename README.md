@@ -10,8 +10,6 @@ Pipeline that ingests N files, find the maximum and minimum values of each, and 
 
 ```
 pip install -r requirements.txt
-```
-```
 python pipeline.py
 ```
 
@@ -33,7 +31,6 @@ docker build -t pipeline-image .
 ```
 
 2. Run the image
-
 
 ```
 docker run -v ~/pipeline-data:/app/pipeline-data --name data-pipeline pipeline-image

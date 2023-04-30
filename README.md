@@ -43,6 +43,45 @@ The pipeline data (inputs and the output file) is located in the user folder of 
 
 ## Deployment with Github Actions
 
+The image is deployed on `docker hub` using github actions.
+
+Jobs:
+
+1. Run test cases
+2. Deploy docker image
+
+The configuration file is the following:
+
+```
+name: Publish Docker image
+
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repo
+      uses: actions/checkout@v3
+      
+    - name: Log in to Docker Hub
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    - name: Docker Build
+      run: |
+        docker build . --file Dockerfile --tag python-pipeline:latest
+    - name: Docker Push
+      run: |
+        docker tag python-pipeline:latest ${{secrets.DOCKER_USER}}/python-pipeline:latest
+        docker push ${{ secrets.DOCKER_USER }}/python-pipeline:latest
+
+```
 
 ## Briefly describe what you would need to change for `N=1e6`
 

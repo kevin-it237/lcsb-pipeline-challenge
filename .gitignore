@@ -3,7 +3,7 @@
 output.csv
 pipeline-data/*
 !pipeline-data/.gitkeep 
-/vscode
+vscode
 /venv
 .DS_Store
 test_pipeline.pyc

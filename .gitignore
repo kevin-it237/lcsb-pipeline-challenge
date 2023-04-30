@@ -7,3 +7,4 @@ pipeline-data/*
 /venv
 .DS_Store
 test_pipeline.pyc
+/vscode/*

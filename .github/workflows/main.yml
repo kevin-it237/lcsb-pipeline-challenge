@@ -1,4 +1,4 @@
-name: Pipeline Container CI
+name: Publish Docker image
 
 on:
   push:
@@ -9,8 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: docker login
+    - name: Check out the repo
+      uses: actions/checkout@v3
+      
+    - name: Log in to Docker Hub
       env:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
@@ -19,3 +21,6 @@ jobs:
     - name: docker build
       run: |
         docker build ./ -t pipeline-image
+    - name: docker push
+      run: |
+        docker push pipeline-image

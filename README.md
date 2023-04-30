@@ -52,7 +52,7 @@ Jobs:
 
 The configuration file is the following:
 
-```
+```yml
 name: Publish Docker image
 
 on:

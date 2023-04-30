@@ -1,0 +1,9 @@
+/__pycache__
+/tests
+output.csv
+pipeline-data/*
+!pipeline-data/.gitkeep 
+/vscode
+/venv
+.DS_Store
+test_pipeline.pyc

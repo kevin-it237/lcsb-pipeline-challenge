@@ -85,3 +85,8 @@ jobs:
 
 ## Briefly describe what you would need to change for `N=1e6`
 
+We can parallelize the processing of the files across multiple machines.
+It is possible by running multiple containers with kubernetes.
+
+We can also use a distributed computing framework like Apache Spark.
+It is fast for these kind of tasks.

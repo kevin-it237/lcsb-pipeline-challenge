@@ -23,4 +23,4 @@ jobs:
         docker build ./ -t pipeline-image
     - name: docker push
       run: |
-        docker push pipeline-image
+        docker push ${{ secrets.DOCKER_USER }}/pipeline-image

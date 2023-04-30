@@ -30,6 +30,12 @@ The docker configuration is located inside the `Dockerfile`.
 docker build -t pipeline-image .
 ```
 
+Or pull the docker image from docker hub
+
+```
+docker pull abelkevin/python-pipeline:latest
+```
+
 2. Run the image
 
 ```
@@ -38,7 +44,7 @@ docker run -v ~/pipeline-data:/app/pipeline-data --name data-pipeline pipeline-i
 
 A volume is mounted such that the inputs and the output files are located on the host machine instead of the container.
 
-The pipeline data (inputs and the output file) is located in the user's folder of the host machine: `~/pipeline-data`.
+The pipeline data (inputs and output files) is located in the user's folder of the host machine: `~/pipeline-data`.
 
 
 ## Deployment with Github Actions

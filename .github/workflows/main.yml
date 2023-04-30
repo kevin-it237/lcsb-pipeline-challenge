@@ -23,4 +23,4 @@ jobs:
         docker build ./ -t python-pipeline
     - name: docker push
       run: |
-        docker push ${{ secrets.DOCKER_USER }}/python-pipeline
+        docker push ${{ secrets.DOCKER_USER }}/python-pipeline:tagname

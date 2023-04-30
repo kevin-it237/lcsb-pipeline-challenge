@@ -3,6 +3,7 @@ import os
 from random import randint
 import numpy as np
 import pandas as pd
+import glob
 
 abs_path = os.path.dirname(__file__)
 
@@ -37,43 +38,36 @@ def generate_data(directory):
         generate_csv(rows_list, folder_path)
 
 
-# step 1: load the data
-def load_data(input_path: str):
+# step 1: load the data, and find extremas
+def load_and_process_data(input_path: str):
     """Read the csv files and return the data it contains"""
     directory = os.path.join(abs_path, input_path)
-    data = []
+    results = []
     try:
-        # get all files inside the given directory
-        for root, dirs, files in os.walk(directory):
-            for file in files:
-                if file.endswith(".csv"):
-                    df = pd.read_csv(directory + "/" + file, header=None)
-                    data.append(df.values.tolist())
+        # get all csv files inside the given directory
+        for filename in glob.glob(directory + "/" +"*.csv"):
+            with open(filename, "r") as csvfile:
+                df = pd.read_csv(csvfile, header=None)
+                results.append(find_min_max(df.values.tolist()))
 
-        return data
+        return results
     except Exception as e:
         raise Exception(e) 
-    
-# step 2: Find min/max value of each file
-def find_min_max(data):
+
+def find_min_max(matrix):
     """Find the maximum and minimum values of each matrix"""
-    min_max_values = []
-    for matrix in data:
-        min_max_values.append([np.max(matrix), np.min(matrix)])
-    
-    return min_max_values
+    return [np.max(matrix), np.min(matrix)]
 
 
-# step 3: export the max/min values as csv
+# step 2: export the max/min values as csv
 def generate_output(data, output_dir):
     # the output csv file is generated inside the /pipeline-data folder
     generate_csv(data=data, outout_folder="{}/output.csv".format(output_dir))
 
 
 def run_pipeline(data_folder_path):
-    data = load_data(data_folder_path)
-    min_max_values = find_min_max(data)
-    generate_output(data=min_max_values, output_dir=data_folder_path)
+    results = load_and_process_data(data_folder_path)
+    generate_output(data=results, output_dir=data_folder_path)
 
 if __name__ == "__main__":
     input_folder = "pipeline-data"

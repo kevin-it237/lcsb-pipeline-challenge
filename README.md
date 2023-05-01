@@ -46,10 +46,17 @@ A volume is mounted such that the inputs and the output files are located on the
 
 The pipeline data (inputs and output files) is located in the user's folder of the host machine: `~/pipeline-data`.
 
+----
+**To check the output:**
+
+`cd ~/pipeline-data`
+`cat output.csv`
+``
+----
 
 ## Deployment with Github Actions
 
-The image is deployed on `docker hub` using github actions.
+The image is deployed on `docker hub` after every push on the *master* branch using github actions.
 
 Jobs:
 

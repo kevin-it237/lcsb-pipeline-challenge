@@ -49,8 +49,9 @@ The pipeline data (inputs and output files) is located in the user's folder of t
 ----
 **To check the output:**
 
-`cd ~/pipeline-data`
-`cat output.csv`
+```
+cd ~/pipeline-data
+cat output.csv
 ``
 ----
 
